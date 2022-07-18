@@ -6,20 +6,9 @@ import pandas as pd
 df = pd.read_excel("customer_database.xlsx")
 
 
-driver = Firefox()
+driver = Chrome()
 
-for i in range(0,1):
-    print(df.columns)
-    # first_name = df.loc[i,"First name (Optional)"]
-    # last_name = df.loc[i,"Last Name (Required if company is not provided)"]
-
-    first_name = "Elizabeth A"
-    last_name = "Hensell"
-    city = "Brookline"
-    state = "MA"
-
-
-    def get_data(first_name,last_name,city,state):
+def get_data(first_name,last_name,city,state):
         print(first_name)
         print(last_name)
         print(city)
@@ -55,7 +44,22 @@ for i in range(0,1):
             email_ids.append(wl.get_attribute('innerHTML'))    
         f['emails'] = ", ".join(email_ids)
 
-        print(f)
+        dff = pd.DataFrame([f])
+        dff.to_csv('sample_output.csv', index=False)
+
+for i in range(0,1):
+    # first_name = df.loc[i,"First name (Optional)"]
+    # last_name = df.loc[i,"Last Name (Required if company is not provided)"]
+
+    first_name = "Elizabeth A"
+    last_name = "Hensell"
+    city = "Brookline"
+    state = "MA" # As sample data 
+
+    get_data(first_name,last_name,city,state)
+
+
+    
 
 
     
